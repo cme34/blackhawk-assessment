@@ -32,7 +32,7 @@ class PdoFactory extends ConnectionFactory {
 			return true;
 		}
 		catch (PDOException $err) {
-			echo $err->getMessage();
+			echo $err->getMessage() . "\n";
 			return false;
 		}
 	}
@@ -45,7 +45,7 @@ class PdoFactory extends ConnectionFactory {
 			return $result->fetch(PDO::FETCH_ASSOC);
 		}
 		catch (PDOException $err) {
-			echo $err->getMessage();
+			echo $err->getMessage() . "\n";
 			return null;
 		}
 	}
@@ -58,7 +58,7 @@ class PdoFactory extends ConnectionFactory {
 			return $result->fetchAll(PDO::FETCH_ASSOC);
 		}
 		catch (PDOException $err) {
-			echo $err->getMessage();
+			echo $err->getMessage() . "\n";
 			return null;
 		}
 	}
@@ -73,7 +73,7 @@ class PdoFactory extends ConnectionFactory {
 			$db->query("CREATE TABLE IF NOT EXISTS $this->table ( id INT NOT NULL, name VARCHAR(256) NOT NULL, description VARCHAR(256) NOT NULL, active TINYINT(1) NOT NULL, created VARCHAR(256) NOT NULL, updated VARCHAR(256) NOT NULL, PRIMARY KEY (id)) ENGINE = InnoDB;");
 		}
 		catch (PDOException $err) {
-			echo $err->getMessage();
+			echo $err->getMessage() . "\n";
 			die();
 		}
 	}
@@ -110,4 +110,16 @@ $testData2 = array(
 		"active" 		=> 1, 
 		"created"		=> "05-03-16 3:15pm", 
 		"updated" 		=> "05-03-16 3:15pm");
+
+//Test pdo factory
+$pdo = new PdoFactory();
+$pdo->setupDatabase();
+echo "Setup database successfully.   <br />\n";
+$pdo->createData($testData1);
+echo "Data added to database successfully.   <br />\n";
+$fetchedData = $pdo->fetchDataById(1);
+echo "Data fetched from database successfully.   <br />\n";
+echo "The fetched data: ";
+print_r($fetchedData);
+
 ?>

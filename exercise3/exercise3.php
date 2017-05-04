@@ -42,7 +42,7 @@ $dataSet1 = genData();
 $dataSet2 = genData();
 $timeEnd = microtime(true); 
 $timeEx = $timeEnd - $timeStart;
-echo "Time taken to generate data: $timeEx <br />";
+echo "Time taken to generate data: $timeEx   <br />\n";
 
 //Find common values between data
 $timeStart = microtime(true); 
@@ -51,5 +51,5 @@ sort($dataSet2);
 $commonData = findCommon($dataSet1, $dataSet2);
 $timeEnd = microtime(true); 
 $timeEx = $timeEnd - $timeStart;
-echo "Time taken to find comman values between data: $timeEx <br />";
+echo "Time taken to find comman values between data: $timeEx   <br />\n";
 ?>

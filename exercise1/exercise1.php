@@ -1,7 +1,7 @@
 <?php
 class FooController {
 	function barAction() {
-		echo "You have accessed barAction in FooController";
+		echo "You have accessed barAction in FooController   <br />\n";
 	}
 }
 
